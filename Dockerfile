@@ -1,4 +1,4 @@
-FROM node:9-alpine
+FROM node:8-alpine
 
 MAINTAINER Mitchell Herrijgers "https://github.com/Morlack"
 
