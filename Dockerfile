@@ -22,5 +22,5 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
 # Telling node-sass which pre-built binary to fetch.
 # This way we don't need rebuilding node-sass each time!
-ENV SASS_BINARY_NAME=linux-x64-67
+# ENV SASS_BINARY_NAME=linux-x64-67
 ENV LIGHTHOUSE_CHROMIUM_PATH /usr/bin/chromium-browser
