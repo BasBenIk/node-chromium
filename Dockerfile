@@ -9,7 +9,7 @@ RUN \
   && apk --no-cache  update \
   && apk add --no-cache --virtual .build-deps \
   gifsicle pngquant optipng libjpeg-turbo-utils \
-  udev ttf-opensans bash chromium nss@edge \
+  udev ttf-opensans bash chromium \
   && rm -rf /var/cache/apk/* /tmp/*
 
 # This line is to tell karma-chrome-launcher where
