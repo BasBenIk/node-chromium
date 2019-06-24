@@ -1,4 +1,4 @@
-FROM node:10-slim
+FROM node:10-alpine
 
 MAINTAINER Bas van Baalen "https://github.com/BasBenIk"
 
@@ -12,10 +12,7 @@ RUN apk update && apk upgrade && \
       freetype@edge \
       harfbuzz@edge \
       ttf-freefont@edge
-
-# Puppeteer v1.12.2 works with Chromium 73.
-RUN yarn add puppeteer@1.12.2
-
+      
 # This line is to tell karma-chrome-launcher where
 # chromium was downloaded and installed to.
 ENV CHROME_BIN /usr/bin/chromium-browser
@@ -28,12 +25,3 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 # This way we don't need rebuilding node-sass each time!
 # ENV SASS_BINARY_NAME=linux-x64-67
 ENV LIGHTHOUSE_CHROMIUM_PATH /usr/bin/chromium-browser
-
-# Add user so we don't need --no-sandbox.
-RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
-    && mkdir -p /home/pptruser/Downloads /app \
-    && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /app
-
-# Run everything after as non-privileged user.
-USER pptruser
